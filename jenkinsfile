@@ -2,9 +2,16 @@ pipeline{
     agent any
       stages {
         stage('clone'){
-					steps{
-          	git 'https://github.com/patilume/Ant-WebProject.git'
-					}
+			steps{
+          	git 'https://github.com/patilume/maven-project.git'
+				}
+			}
+		stage('compile'){
+			steps{
+				withAnt(installation: 'ant', jdk: 'jdk') {
+				sh 'ant init'
 				}
 			}
 		}
+	}
+}
