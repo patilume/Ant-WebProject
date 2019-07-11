@@ -6,10 +6,10 @@ pipeline{
           	git 'https://github.com/patilume/maven-project.git'
 				}
 			}
-		stage('compile'){
+		stage('prepare'){
 			steps{
 				withAnt(installation: 'ant', jdk: 'jdk') {
-				sh 'ant init'
+				sh 'ant prepare'
 				}
 			}
 		}
