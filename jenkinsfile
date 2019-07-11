@@ -6,10 +6,33 @@ pipeline{
           	git 'https://github.com/patilume/Ant-WebProject.git'
 				}
 			}
+		stage('initialize'){
+			steps{
+				withAnt(installation: 'ant', jdk: 'jdk') {
+				sh 'ant init'
+				}
+			}
+		}
 		stage('prepare'){
 			steps{
 				withAnt(installation: 'ant', jdk: 'jdk') {
 				sh 'ant prepare'
+				}
+			}
+		}
+		
+		stage('compile'){
+			steps{
+				withAnt(installation: 'ant', jdk: 'jdk') {
+				sh 'ant compile'
+				}
+			}
+		}
+		
+		stage('war'){
+			steps{
+				withAnt(installation: 'ant', jdk: 'jdk') {
+				sh 'ant war'
 				}
 			}
 		}
